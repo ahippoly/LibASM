@@ -10,16 +10,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 NASM = nasm
 
-# Detect OS and set appropriate NASM format
-UNAME_S := $(shell uname -s 2>/dev/null || echo "Windows")
-ifeq ($(UNAME_S),Linux)
-    NASMFLAGS = -f elf64
-else ifeq ($(UNAME_S),Darwin)
-    NASMFLAGS = -f macho64
-else
-    # Windows or unknown OS - assume Windows
-    NASMFLAGS = -f win64
-endif
+NASMFLAGS = -f elf64
 
 OBJ = $(SRCS:.s=.o)
 
