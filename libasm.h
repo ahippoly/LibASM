@@ -5,7 +5,8 @@
 # include <stdio.h>
 # include <string.h>
 # include <unistd.h>
-
+# include <fcntl.h>
+# include <stdlib.h>
 
 ssize_t		ft_write(int, char *, size_t);
 ssize_t		ft_read(int, char *, size_t);

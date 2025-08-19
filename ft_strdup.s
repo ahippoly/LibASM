@@ -1,8 +1,24 @@
+extern  ft_strlen
+extern  ft_strcpy
+extern  malloc
+
 section .text
-global _start
+    global  ft_strdup
 
-_start:
-    mov rax, 60        ; sys_exit system call number
-    mov rdi, 0         ; exit status (0 = success)
-    syscall            ; invoke system call
+; rdi = str
+ft_strdup:
+    push    rdi
+    call    ft_strlen
+    mov     rdi, rax
+    add     rdi, 1
+    call    malloc wrt ..plt
+    cmp     rax, 0
+    je      .error
+    mov     rdi, rax
+    pop     rsi ; rsi = str
+    jmp     ft_strcpy
 
+.error:
+    pop     rax
+    xor     rax, rax
+    ret

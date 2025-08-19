@@ -19,8 +19,11 @@ ft_strcmp:
     jmp .loop
 
 .end:
-    sub r8b, r9b
-    movsx rax, r8b
+    movsx r8, r8b
+    movsx r9, r9b
+    sub r8, r9
+
+    mov rax, r8
     pop r9
     pop r8
     ret
