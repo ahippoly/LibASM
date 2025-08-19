@@ -1,5 +1,3 @@
-NAME = libasm
-
 LIB_NAME = libasm.a
 
 SRCS = 	ft_write.s ft_read.s ft_strcmp.s ft_strcpy.s ft_strdup.s ft_strlen.s ft_set_errno.s
@@ -17,13 +15,15 @@ OBJ = $(SRCS:.s=.o)
 %.o : %.s
 	$(NASM) $(NASMFLAGS) $< -o $@
 
-all : $(NAME)
+all : $(LIB_NAME)
 
-$(NAME) : $(OBJ)
+$(LIB_NAME) : $(OBJ)
 	ar rcs $(LIB_NAME) $(OBJ)
 
-main : all
-	$(CC) $(CFLAGS) main.c $(LIB_NAME)
+a.out: main.c $(LIB_NAME)
+	$(CC) $(CFLAGS) main.c $(LIB_NAME) -o a.out
+
+main: a.out
 	
 clean :
 	rm -f $(OBJ)
