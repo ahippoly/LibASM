@@ -122,6 +122,8 @@ void test_ft_strdup(void)
 
     free(result_ft);
     free(result_lib_c);
+    free(result_ft2);
+    free(result_lib_c2);
 }
 
 
