@@ -5,16 +5,18 @@ global ft_strcpy
 ; rsi = src
 ft_strcpy:
     xor rax, rax
+    push r12
 
 .loop:
-    mov r8b, byte [rsi + rax]
-    mov byte [rdi + rax], r8b
-    cmp r8b, 0
+    mov r12b, byte [rsi + rax]
+    mov byte [rdi + rax], r12b
+    cmp r12b, 0
     je .end
     inc rax
     jmp .loop
 
 .end:
+    pop r12
     mov rax, rdi
     ret
 

@@ -5,26 +5,26 @@ global ft_strcmp
 ; rsi = s2
 ft_strcmp:
     xor rax, rax
-    push r8
-    push r9
+    push r12
+    push r13
 
 .loop:
-    mov r8b, byte [rdi + rax]
-    mov r9b, byte [rsi + rax]
-    cmp r8b, r9b
+    mov r12b, byte [rdi + rax]
+    mov r13b, byte [rsi + rax]
+    cmp r12b, r13b
     jne .end
-    cmp r8b, 0
+    cmp r12b, 0
     je .end
     inc rax
     jmp .loop
 
 .end:
-    movsx r8, r8b
-    movsx r9, r9b
-    sub r8, r9
+    movsx r12, r12b
+    movsx r13, r13b
+    sub r12, r13
 
-    mov rax, r8
-    pop r9
-    pop r8
+    mov rax, r12
+    pop r13
+    pop r12
     ret
 
